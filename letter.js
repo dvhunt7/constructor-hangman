@@ -1,16 +1,23 @@
-//letter constructor
-// Letter.js: Contains a constructor, Letter. 
-function letter(){
+var Letter = function (ltr) {
+    // property to store the actual letter
+    this.letter = ltr;
+    // property/boolean if the letter can be shown
+    this.appear = false;
 
+    this.letterRender = function () {
+        if (this.letter == ' ') { /*renders a blank as it is*/
+            //makes sure that when the function checks if the word is found doesn't read the blank as false.
+            this.appear = true;
+            return '  ';
+        } if (this.appear === false) { /*if it doesn't appear, it returns a ' _ '*/
+            return ' _ ';
+        } else { /*otherwise it just appears as itself*/
+            return this.letter;
+        }
 
-//This constructor should be able to either 
-//display an underlying character or a blank placeholder (such as an underscore), 
-//depending on whether or not the user has guessed the letter. That means the constructor should define:
-//A string value to store the underlying character for the letter
-//A boolean value that stores whether that letter has been guessed yet
-//A function that returns the underlying character if the letter has been guessed,
-// or a placeholder(like an underscore) if the letter has not been guessed
-//A function that takes a character as an argument and checks it against the underlying character, 
-//updating the stored boolean value to true if it was guessed correctly
+    };
+};
 
-}
+// export to use in word.js
+module.exports = Letter;
+
